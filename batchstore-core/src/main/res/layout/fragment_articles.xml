@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFF"
+        android:adjustViewBounds="true"
+        android:gravity="center"
+        android:horizontalSpacing="32dp"
+        android:verticalSpacing="32dp"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:listSelector="@android:color/transparent"
+    />
+
+</android.support.constraint.ConstraintLayout>

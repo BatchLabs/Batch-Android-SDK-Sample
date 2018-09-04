@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:scrollbarStyle="outsideInset"
+    tools:context="com.batchlabs.android.batchstore.core.UI.Settings.SettingsFragment">
+
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/settingsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Account" />
+
+            <Switch
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_weight="1"
+                android:text="Switch" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/settingsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notifications" />
+
+            <Switch
+                android:id="@+id/enablePush"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="Enable push notification" />
+
+            <Switch
+                android:id="@+id/flashSales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="Flash sales" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/settingsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preference category" />
+
+            <Switch
+                android:id="@+id/suggestedContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="Suggested content" />
+
+            <Switch
+                android:id="@+id/suggestionFashion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginVertical="10dp"
+                android:text="Fashion" />
+
+            <Switch
+                android:id="@+id/suggestionMensWear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginVertical="10dp"
+                android:text="Men's wear" />
+
+            <Switch
+                android:id="@+id/suggestionOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginVertical="10dp"
+                android:text="Other" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/settingsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/settingsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/debug_textview" />
+
+            <TextView
+                android:id="@+id/installationID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/lastToken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="TextView" />
+
+            <Button
+                android:layout_marginTop="15dp"
+                android:id="@+id/printBatchUser"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Print Batch User debug in logs" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

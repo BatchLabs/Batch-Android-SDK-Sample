@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Batch Store</string>
+    <string name="title_shop">Shop</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_inbox">Inbox</string>
+    <string name="title_settings">Settings</string>
+
+    <string name="title_login">Please enter your demo code</string>
+    <string name="description_login">If you do not have a demo code, please contact your sales representative or the support team</string>
+
+    <string name="title_activity_code_redeem">Waiting</string>
+    <string name="description_coderedeem">The app will now quit. \n Relaunch it to continue the setup</string>
+
+    <string name="title_activity_login_landing">Login</string>
+    <string name="title_login_landing">Batch Store is better with an account</string>
+    <string name="description_login_landing">Log in to sync your cart and get notifications about sales and other exciting stuff</string>
+    <string name="sign_in_login_landing">Sign in</string>
+    <string name="not_now_login_landing">Not now</string>
+
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_login_credentials">Sign in</string>
+    <string name="title_login_credentials">Sign into your Batch Store accout</string>
+
+    <string name="title_activity_article_details">Article</string>
+    <string name="button_article_details">Add to cart</string>
+
+    <string name="debug_textview">Debug</string>
+</resources>

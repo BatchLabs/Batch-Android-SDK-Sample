@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+    <PreferenceCategory
+        android:key="loggedIn"
+        android:title="Account">
+
+        <SwitchPreference
+            android:key="switch_login"
+            android:title="Logged in as" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Notifications">
+
+        <SwitchPreference
+            android:key="enable_push"
+            android:title="Enable push notifications" />
+        <SwitchPreference
+            android:key="flash_sales"
+            android:title="Flash sales" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Preference category">
+
+        <SwitchPreference
+            android:key="suggested"
+            android:title="Suggested content" />
+        <SwitchPreference
+            android:key="fashion"
+            android:title="Fashion" />
+        <SwitchPreference
+            android:key="mens"
+            android:title="Men's wear" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="other"
+            android:title="Other" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Advanced">
+
+        <EditTextPreference
+            android:defaultValue="Debug"
+            android:key="debug"
+            android:clickable="false"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:title="Debug" />
+    </PreferenceCategory>
+</PreferenceScreen>
