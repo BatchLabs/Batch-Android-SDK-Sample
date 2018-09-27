@@ -12,8 +12,7 @@
     <ImageView
         android:id="@+id/photoImageView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:srcCompat="@mipmap/appicon" />
+        android:layout_height="200dp" />
 
     <TextView
         android:id="@+id/labelTextView"
