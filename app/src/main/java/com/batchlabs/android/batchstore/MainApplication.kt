@@ -25,7 +25,6 @@ class MainApplication: Application() {
 
         Batch.setConfig(Config(API_KEY))
         registerActivityLifecycleCallbacks(BatchActivityLifecycleHelper())
-        Log.d("Installation id", "id : ${Batch.User.getInstallationID()}")
 
         val subscriptionManager = SubscriptionManager(applicationContext)
 
