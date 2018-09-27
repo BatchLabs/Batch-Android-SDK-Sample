@@ -8,8 +8,6 @@ build
 .gradle
 doc
 target
-google-play-services_lib
-temp
 
 
 # Recommended ignore from Gradle
@@ -28,3 +26,6 @@ temp
 **/*.iml
 **/.idea/saveactions_settings.xml
 **/.idea/assetWizardSettings.xml
+
+# Ignore google services json, since users have to bring their own configuration
+app/google-services.json
