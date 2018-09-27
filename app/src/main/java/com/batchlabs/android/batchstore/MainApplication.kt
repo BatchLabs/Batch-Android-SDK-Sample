@@ -19,7 +19,7 @@ class MainApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Batch.Push.setSmallIconResourceId(R.mipmap.appicon)
+        Batch.Push.setSmallIconResourceId(R.drawable.ic_notification_smallicon)
         Batch.Push.setNotificationsColor(resources.getColor(R.color.colorAccent))
 
 
