@@ -38,7 +38,7 @@ class SubscriptionManager (val context:Context) {
         }
 
     var suggestedContent: Boolean?
-        get() = PreferenceHelper().getBoolreference(context, suggestedContentKey, false)
+        get() = PreferenceHelper().getBoolreference(context, suggestedContentKey, true)
         set(newValue) {
             if (newValue != null) {
                 PreferenceHelper().setBoolPreference(context, suggestedContentKey, newValue)
