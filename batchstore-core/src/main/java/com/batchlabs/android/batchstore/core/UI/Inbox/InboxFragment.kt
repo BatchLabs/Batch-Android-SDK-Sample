@@ -21,7 +21,7 @@ import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 
 class InboxFragment : Fragment() {
-    private val inboxSecret = "f52264b1fd0a4aa496da842a8bad045b"
+    private val inboxSecret = ""
 
 
     var notifications: List<BatchInboxNotificationContent> = emptyList()
@@ -53,11 +53,12 @@ class InboxFragment : Fragment() {
 
         Log.d(TAG,"username $username")
 
-        if (username != null) {
-            setupUserFetcher(context, username)
-        } else {
-            setupInstallationFetcher(context)
-        }
+//        if (username != null) {
+//            setupUserFetcher(context, username)
+//        } else {
+//            setupInstallationFetcher(context)
+//        }
+        setupInstallationFetcher(context)
 
         reloadData { adapter -> setAdapter(adapter) }
 
