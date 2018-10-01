@@ -15,6 +15,8 @@ import com.batchlabs.android.batchstore.*
 import com.batchlabs.android.batchstore.UI.Login.LoginLandingActivity
 import com.batchlabs.android.batchstore.core.R
 import kotlinx.android.synthetic.main.fragment_settings.view.*
+import com.batch.android.PushNotificationType
+import java.util.*
 
 
 class SettingsFragment : Fragment() {
@@ -46,8 +48,8 @@ class SettingsFragment : Fragment() {
 
         setAllEnable(view)
 
-        view.enablePush.isChecked = true
-        view.enablePush.isEnabled = false
+        view.enablePush.setOnClickListener { notificationPreference(view) }
+        view.enablePush.isChecked = !Batch.Push.getNotificationsType(context).contains(PushNotificationType.NONE)
 
         if (!loggedIn) {
             view.flashSales.isChecked = false
@@ -111,6 +113,21 @@ class SettingsFragment : Fragment() {
             Log.d(TAG,"Batch Store Debug information --")
             Log.d(TAG,"InstallID: ${Batch.User.getInstallationID()}")
             Log.d(TAG,"Last known push token: ${Batch.Push.getLastKnownPushToken()}")
+        }
+    }
+
+    private fun notificationPreference(view: View) {
+        val switch = view.enablePush
+
+        if (switch.isChecked) {
+            val set = EnumSet.of(PushNotificationType.ALERT)
+            set.add(PushNotificationType.SOUND)
+            set.add(PushNotificationType.LIGHTS)
+
+            Batch.Push.setNotificationsType(set)
+        } else {
+            val set = EnumSet.of(PushNotificationType.NONE) // Disable all notifications
+            Batch.Push.setNotificationsType(set)
         }
     }
 
