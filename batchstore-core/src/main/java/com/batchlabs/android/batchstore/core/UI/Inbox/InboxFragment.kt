@@ -50,9 +50,7 @@ class InboxFragment : Fragment() {
 
         val userManager = UserManager(context)
         val username = userManager.username
-
-        Log.d(TAG,"username $username")
-
+        
 //        if (username != null) {
 //            setupUserFetcher(context, username)
 //        } else {
