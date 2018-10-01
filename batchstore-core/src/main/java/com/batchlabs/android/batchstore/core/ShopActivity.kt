@@ -53,10 +53,14 @@ class ShopActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        removeAllFragments()
+        val defaultFragment = ArticlesFragment.newInstance()
 
-        currentFragment = ArticlesFragment.newInstance()
+        if (currentFragment.tag.equals("Shop")){
+            System.exit(0)
+        }
+
+        removeAllFragments()
+        currentFragment = defaultFragment
         setupLayout("Shop", currentFragment)
 
         bottom_navigation.selectedItemId = R.id.navigation_shop
