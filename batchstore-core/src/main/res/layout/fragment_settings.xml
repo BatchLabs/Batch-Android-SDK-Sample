@@ -65,12 +65,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/settingsTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Preference category" />
-
             <Switch
                 android:id="@+id/suggestedContent"
                 android:layout_width="match_parent"
