@@ -6,11 +6,12 @@ import android.util.Log
 import com.batch.android.Batch
 import com.batch.android.BatchActivityLifecycleHelper
 import com.batch.android.Config
+import com.batch.android.PushNotificationType
 //import com.batchlabs.android.batchstore.UI.Code.CodeActivity
 import com.batchlabs.android.batchstore.UI.Login.LoginLandingActivity
 import com.crashlytics.android.Crashlytics
 import io.fabric.sdk.android.Fabric
-
+import java.util.*
 
 
 class MainApplication: Application() {
@@ -22,6 +23,14 @@ class MainApplication: Application() {
         Batch.Push.setSmallIconResourceId(R.drawable.ic_notification_smallicon)
         Batch.Push.setNotificationsColor(resources.getColor(R.color.colorAccent))
 
+
+        if (Batch.Push.getNotificationsType(applicationContext) == null) {
+            val set = EnumSet.of(PushNotificationType.LIGHTS)
+            set.add(PushNotificationType.SOUND)
+            set.add(PushNotificationType.ALERT)
+
+            Batch.Push.setNotificationsType(set)
+        }
 
         Batch.setConfig(Config(API_KEY))
         registerActivityLifecycleCallbacks(BatchActivityLifecycleHelper())

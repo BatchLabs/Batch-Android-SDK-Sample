@@ -51,6 +51,7 @@ class SettingsFragment : Fragment() {
         view.enablePush.setOnClickListener { notificationPreference(view) }
         view.enablePush.isChecked = !Batch.Push.getNotificationsType(context).contains(PushNotificationType.NONE)
 
+
         if (!loggedIn) {
             view.flashSales.isChecked = false
             view.flashSales.isEnabled = false
