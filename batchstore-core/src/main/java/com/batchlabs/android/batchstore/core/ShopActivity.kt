@@ -1,11 +1,14 @@
 package com.batchlabs.android.batchstore.core
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.batchlabs.android.batchstore.UI.Articles.ArticlesFragment
 import com.batchlabs.android.batchstore.UI.Inbox.InboxFragment
+import com.batchlabs.android.batchstore.UI.Login.LoginLandingActivity
+import com.batchlabs.android.batchstore.UserManager
 import com.batchlabs.android.batchstore.core.UI.Cart.CartFragment
 import com.batchlabs.android.batchstore.core.UI.Settings.SettingsFragment
 import kotlinx.android.synthetic.main.activity_shop.*
@@ -45,6 +48,14 @@ class ShopActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        val userManager = UserManager(applicationContext)
+
+        if (!userManager.onboardingAttempted!! || userManager.onboardingAttempted == null){
+            val intent = Intent(this, LoginLandingActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
 
         removeAllFragments()
 

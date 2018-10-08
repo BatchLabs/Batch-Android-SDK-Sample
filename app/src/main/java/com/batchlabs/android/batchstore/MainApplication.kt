@@ -1,14 +1,10 @@
 package com.batchlabs.android.batchstore
 
 import android.app.Application
-import android.content.Intent
-import android.util.Log
 import com.batch.android.Batch
 import com.batch.android.BatchActivityLifecycleHelper
 import com.batch.android.Config
 import com.batch.android.PushNotificationType
-//import com.batchlabs.android.batchstore.UI.Code.CodeActivity
-import com.batchlabs.android.batchstore.UI.Login.LoginLandingActivity
 import com.crashlytics.android.Crashlytics
 import io.fabric.sdk.android.Fabric
 import java.util.*
@@ -40,15 +36,6 @@ class MainApplication: Application() {
         if (subscriptionManager.shouldSetPreferences) {
             subscriptionManager.initPreferences()
         }
-
-        val userManager = UserManager(applicationContext)
-
-        if (!userManager.onboardingAttempted!! || userManager.onboardingAttempted == null){
-            val intent = Intent(this, LoginLandingActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-        }
-
 
         Fabric.with(this, Crashlytics())
     }
