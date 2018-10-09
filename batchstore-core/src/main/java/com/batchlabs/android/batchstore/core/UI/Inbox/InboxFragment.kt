@@ -79,6 +79,7 @@ class InboxFragment : Fragment() {
     }
 
     private fun reloadData(callback: (InboxAdapter?) -> Unit) {
+        loading = true
         inboxAPI.fetchNewNotifications(object : BatchInboxFetcher.OnNewNotificationsFetchedListener {
 
             override fun onFetchSuccess(notificationsResult: MutableList<BatchInboxNotificationContent>, foundNewNotifications: Boolean, endReached: Boolean) {
@@ -86,6 +87,7 @@ class InboxFragment : Fragment() {
                 inboxAdapter = InboxAdapter(notifications as MutableList<BatchInboxNotificationContent>) { n -> setAsRead(n) }
 
                 swipe.isRefreshing = false
+                loading = false
 
                 callback(inboxAdapter)
                 Log.d(TAG, "onFetchSuccess ${notifications.size} foundNew: $foundNewNotifications endReached: $endReached")
@@ -93,6 +95,8 @@ class InboxFragment : Fragment() {
 
             override fun onFetchFailure(error: String) {
                 swipe.isRefreshing = false
+                loading = false
+
                 callback(null)
                 Log.d(TAG, "onFetchFailure $error")
             }
@@ -133,6 +137,9 @@ class InboxFragment : Fragment() {
             })
         } else {
             Log.d(TAG, "Adapter is null")
+            val emptyList: MutableList<BatchInboxNotificationContent> = arrayListOf()
+            inboxAdapter = InboxAdapter(emptyList) { n -> setAsRead(n) }
+            layoutView.inbox_recyclerview.adapter = inboxAdapter
         }
     }
 
