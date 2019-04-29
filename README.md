@@ -6,7 +6,7 @@ This sample is a full fledged example meant to show both basic and advanced inte
 
 # How run it
 * Clone this repository
-* Follow this instructions about prerequisites [https://batch.com/doc/android/prerequisites](https://batch.com/doc/android/prerequisites.html)
+* Follow this instructions about prerequisites [https://batch.com/doc/android/prerequisites](https://batch.com/doc/android/prerequisites.html). You will need to associate the project to a Firebase Project to continue.
 * Batch SDK is already installed, you have to setup Batch with your API KEY in build.gradle : `buildConfigField "String", "API_KEY", '"<YOUR API KEY HERE>"'` Make sure you keep `'"` before your API Key and `"'` after, they are needed to make a working string constant.
 * Build gradle
 * Run your app, open the Logcat tab of Android Studio. You should see the following logs :
