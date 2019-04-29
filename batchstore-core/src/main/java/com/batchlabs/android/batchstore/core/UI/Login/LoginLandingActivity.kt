@@ -2,7 +2,7 @@ package com.batchlabs.android.batchstore.UI.Login
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.batchlabs.android.batchstore.UserManager
 import com.batchlabs.android.batchstore.core.R
 import com.batchlabs.android.batchstore.core.ShopActivity

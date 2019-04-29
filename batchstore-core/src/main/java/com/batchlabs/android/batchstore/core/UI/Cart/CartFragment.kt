@@ -1,13 +1,13 @@
 package com.batchlabs.android.batchstore.core.UI.Cart
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.*
 import com.batchlabs.android.batchstore.CartManager
 import com.batchlabs.android.batchstore.core.R
 import kotlinx.android.synthetic.main.fragment_cart.view.*
 
-class CartFragment : Fragment() {
+class CartFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var layoutView:View
 

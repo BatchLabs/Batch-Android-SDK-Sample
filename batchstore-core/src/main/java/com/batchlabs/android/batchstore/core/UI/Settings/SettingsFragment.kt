@@ -4,7 +4,7 @@ package com.batchlabs.android.batchstore.core.UI.Settings
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +19,7 @@ import com.batch.android.PushNotificationType
 import java.util.*
 
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : androidx.fragment.app.Fragment() {
 
     val TAG:String = "SettingsFragment"
 

@@ -2,9 +2,9 @@ package com.batchlabs.android.batchstore.core
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import com.batchlabs.android.batchstore.UI.Articles.ArticlesFragment
 import com.batchlabs.android.batchstore.UI.Inbox.InboxFragment
 import com.batchlabs.android.batchstore.UI.Login.LoginLandingActivity
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_shop.*
 
 class ShopActivity : AppCompatActivity() {
 
-    private lateinit var currentFragment: Fragment
+    private lateinit var currentFragment: androidx.fragment.app.Fragment
     private val TAG:String = "ShopActivity"
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -84,7 +84,7 @@ class ShopActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupLayout(title:String,fragment:Fragment){
+    private fun setupLayout(title:String,fragment: androidx.fragment.app.Fragment){
         currentFragment = fragment
 
         setTitle(title)

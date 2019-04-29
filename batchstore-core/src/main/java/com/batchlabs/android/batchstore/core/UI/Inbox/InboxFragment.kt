@@ -3,9 +3,9 @@ package com.batchlabs.android.batchstore.UI.Inbox
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.*
 import com.batch.android.Batch
@@ -20,14 +20,14 @@ import java.security.NoSuchAlgorithmException
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 
-class InboxFragment : Fragment() {
+class InboxFragment : androidx.fragment.app.Fragment() {
     private val inboxSecret = ""
 
 
     var notifications: List<BatchInboxNotificationContent> = emptyList()
     lateinit var inboxAPI: BatchInboxFetcher
     lateinit var inboxAdapter: InboxAdapter
-    lateinit var swipe:SwipeRefreshLayout
+    lateinit var swipe: androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
     private var loading:Boolean = false
     private var TAG: String = "InboxFragment"
@@ -124,10 +124,10 @@ class InboxFragment : Fragment() {
     private fun setAdapter(adapter:InboxAdapter?) {
         if(adapter != null) {
             layoutView.inbox_recyclerview.adapter = adapter
-            layoutView.inbox_recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            layoutView.inbox_recyclerview.addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    if (newState == androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE) {
                         val canScrollDownMore = recyclerView.canScrollHorizontally(1)
                         if (!canScrollDownMore) {
                             if (!loading) { fetchMore() }

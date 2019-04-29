@@ -1,7 +1,7 @@
 package com.batchlabs.android.batchstore.UI.Articles
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.batchlabs.android.batchstore.CartManager
 import com.batchlabs.android.batchstore.UI.Data.Models.Article

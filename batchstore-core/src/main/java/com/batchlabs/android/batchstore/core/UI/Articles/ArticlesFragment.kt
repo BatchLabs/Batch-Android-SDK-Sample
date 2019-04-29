@@ -2,7 +2,7 @@ package com.batchlabs.android.batchstore.UI.Articles
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import com.batchlabs.android.batchstore.core.R
 import kotlinx.android.synthetic.main.fragment_articles.view.*
 
 
-class ArticlesFragment : Fragment() {
+class ArticlesFragment : androidx.fragment.app.Fragment() {
     companion object {
         fun newInstance(): ArticlesFragment {
             return ArticlesFragment()

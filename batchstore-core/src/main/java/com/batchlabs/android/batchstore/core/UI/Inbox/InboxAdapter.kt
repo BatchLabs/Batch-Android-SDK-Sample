@@ -1,7 +1,7 @@
 package com.batchlabs.android.batchstore.UI.Inbox
 
 import android.opengl.Visibility
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.row_inbox.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class InboxAdapter(private val notifications: MutableList<BatchInboxNotificationContent>, private val clickListener: (BatchInboxNotificationContent) -> Unit): RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
+class InboxAdapter(private val notifications: MutableList<BatchInboxNotificationContent>, private val clickListener: (BatchInboxNotificationContent) -> Unit): androidx.recyclerview.widget.RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (notifications.isEmpty()) {
             holder.title.text = "No data"
@@ -54,7 +54,7 @@ class InboxAdapter(private val notifications: MutableList<BatchInboxNotification
 
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView){
         val unreadView = itemView.inboxUnread!!
         val body = itemView.inboxBody!!
         val title = itemView.inboxTitle!!
