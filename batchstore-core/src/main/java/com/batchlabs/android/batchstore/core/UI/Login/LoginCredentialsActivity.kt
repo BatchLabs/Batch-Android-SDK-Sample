@@ -22,7 +22,7 @@ class LoginCredentialsActivity : AppCompatActivity() {
         signInButton.setOnClickListener {
             val email = emailEditText.text.toString()
 
-            if (email != null && email.isNotEmpty()) {
+            if (email.isNotEmpty()) {
                 val userManager = UserManager(applicationContext)
 
                 if (!userManager.isLoggedIn) {

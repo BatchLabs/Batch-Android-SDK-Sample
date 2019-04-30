@@ -43,7 +43,7 @@ class InboxFragment : androidx.fragment.app.Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
 
-        val view = inflater!!.inflate(R.layout.fragment_inbox, container, false)
+        val view = inflater.inflate(R.layout.fragment_inbox, container, false)
         val context = view.context
         layoutView = view
         swipe = view.swipeRefresh

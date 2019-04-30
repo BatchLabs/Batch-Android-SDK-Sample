@@ -19,7 +19,7 @@ class CartFragment : androidx.fragment.app.Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
-        val view = inflater!!.inflate(R.layout.fragment_cart,container,false)
+        val view = inflater.inflate(R.layout.fragment_cart,container,false)
         layoutView = view
         refresh()
         return view

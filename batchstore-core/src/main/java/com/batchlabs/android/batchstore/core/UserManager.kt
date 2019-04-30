@@ -1,9 +1,7 @@
 package com.batchlabs.android.batchstore
 
 import android.content.Context
-import android.util.Log
 import com.batch.android.Batch
-import com.batch.android.BatchUserDataEditor
 
 private val onboardingAttemptedKey = "onboardingAttempted"
 private val usernameKey = "accountUsername"
@@ -16,7 +14,7 @@ class UserManager (context:Context) {
         get() = username != null
 
     var onboardingAttempted: Boolean?
-        get() = PreferenceHelper().getBoolreference(context,onboardingAttemptedKey,false)
+        get() = PreferenceHelper().getBoolPreference(context,onboardingAttemptedKey,false)
         set(newValue) {
             if (newValue != null) {
                 PreferenceHelper().setBoolPreference(context,onboardingAttemptedKey, newValue)

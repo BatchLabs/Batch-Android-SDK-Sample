@@ -1,9 +1,7 @@
 package com.batchlabs.android.batchstore
 
 import android.content.Context
-import android.util.Log
 import com.batch.android.Batch
-import com.batch.android.BatchUserDataEditor
 
 
 private val defaultsSetKey = "defaults_set"
@@ -24,10 +22,10 @@ class SubscriptionManager (val context:Context) {
     val automaticBatchSync:Boolean = true
 
     var shouldSetPreferences: Boolean = false
-        get() = !PreferenceHelper().getBoolreference(context,defaultsSetKey,false)!!
+        get() = !PreferenceHelper().getBoolPreference(context,defaultsSetKey,false)
 
     var flashSales: Boolean?
-        get() = PreferenceHelper().getBoolreference(context,flashSalesKey, false)
+        get() = PreferenceHelper().getBoolPreference(context,flashSalesKey, false)
         set(newValue) {
             if (newValue != null) {
                 PreferenceHelper().setBoolPreference(context, flashSalesKey, newValue)
@@ -38,7 +36,7 @@ class SubscriptionManager (val context:Context) {
         }
 
     var suggestedContent: Boolean?
-        get() = PreferenceHelper().getBoolreference(context, suggestedContentKey, true)
+        get() = PreferenceHelper().getBoolPreference(context, suggestedContentKey, true)
         set(newValue) {
             if (newValue != null) {
                 PreferenceHelper().setBoolPreference(context, suggestedContentKey, newValue)
@@ -109,8 +107,8 @@ class SubscriptionManager (val context:Context) {
         val userManager = UserManager(context)
 
         val editor = Batch.User.editor()
-        editor.setAttribute(flashSalesKey, pref.getBoolreference(context, flashSalesKey,false)!!)
-        editor.setAttribute(suggestedContentKey, pref.getBoolreference(context, suggestedContentKey,false)!!)
+        editor.setAttribute(flashSalesKey, pref.getBoolPreference(context, flashSalesKey,false))
+        editor.setAttribute(suggestedContentKey, pref.getBoolPreference(context, suggestedContentKey,false))
 
         editor.clearTagCollection(suggestionCategoriesKeys)
 

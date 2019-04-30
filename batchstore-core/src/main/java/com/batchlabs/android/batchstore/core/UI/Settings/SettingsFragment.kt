@@ -24,7 +24,7 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
     val TAG:String = "SettingsFragment"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_settings,container,false)
+        val view = inflater.inflate(R.layout.fragment_settings,container,false)
 
         refreshForm(view)
         refreshInfo(view)

@@ -35,8 +35,8 @@ class PreferenceHelper {
         return false
     }
 
-    fun getBoolreference(context: Context, key: String, defaultValue:Boolean): Boolean? {
-        var value: Boolean? = defaultValue
+    fun getBoolPreference(context: Context, key: String, defaultValue:Boolean): Boolean {
+        var value: Boolean = defaultValue
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         if (preferences != null) {
             value = preferences.getBoolean(key,defaultValue)
