@@ -51,7 +51,7 @@ class ShopActivity : AppCompatActivity() {
 
         val userManager = UserManager(applicationContext)
 
-        if (!userManager.onboardingAttempted!! || userManager.onboardingAttempted == null){
+        if (!userManager.onboardingAttempted) {
             val intent = Intent(this, LoginLandingActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)

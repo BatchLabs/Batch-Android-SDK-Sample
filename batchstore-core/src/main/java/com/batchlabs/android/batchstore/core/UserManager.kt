@@ -13,13 +13,11 @@ class UserManager (context:Context) {
     var isLoggedIn:Boolean = false
         get() = username != null
 
-    var onboardingAttempted: Boolean?
+    var onboardingAttempted: Boolean
         get() = PreferenceHelper().getBoolPreference(context,onboardingAttemptedKey,false)
         set(newValue) {
-            if (newValue != null) {
-                PreferenceHelper().setBoolPreference(context,onboardingAttemptedKey, newValue)
-                syncBatchUserInfo()
-            }
+            PreferenceHelper().setBoolPreference(context,onboardingAttemptedKey, newValue)
+            syncBatchUserInfo()
         }
 
     var username: String?
