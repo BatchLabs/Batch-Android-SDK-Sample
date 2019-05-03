@@ -49,7 +49,13 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
         setAllEnable(view)
 
         view.enablePush.setOnClickListener { notificationPreference(view) }
-        view.enablePush.isChecked = !Batch.Push.getNotificationsType(context).contains(PushNotificationType.NONE)
+
+        val notifType = Batch.Push.getNotificationsType(context)
+        if (notifType != null) {
+            view.enablePush.isChecked = !notifType.contains(PushNotificationType.NONE)
+        } else {
+            view.enablePush.isChecked = true
+        }
 
 
         if (!loggedIn) {
