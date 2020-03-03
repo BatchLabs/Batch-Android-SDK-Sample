@@ -60,14 +60,12 @@ class CartFragment : androidx.fragment.app.Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item != null) {
-            when (item.itemId) {
-                R.id.action_cut ->
-                    clear()
-                else -> {
-                    clear()
-                }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_cut ->
+                clear()
+            else -> {
+                clear()
             }
         }
 

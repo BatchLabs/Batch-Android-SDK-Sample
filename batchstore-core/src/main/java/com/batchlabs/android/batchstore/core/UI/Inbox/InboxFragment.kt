@@ -159,15 +159,13 @@ class InboxFragment : androidx.fragment.app.Fragment() {
         inboxAdapter.notifyDataSetChanged()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item != null) {
-            when (item.itemId) {
-                R.id.read_all -> {
-                    setAllAsRead()
-                }
-                else -> {
-                    setAllAsRead()
-                }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.read_all -> {
+                setAllAsRead()
+            }
+            else -> {
+                setAllAsRead()
             }
         }
 
