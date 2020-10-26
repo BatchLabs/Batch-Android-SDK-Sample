@@ -5,10 +5,7 @@ import com.batch.android.Batch
 import com.batch.android.BatchActivityLifecycleHelper
 import com.batch.android.Config
 import com.batch.android.PushNotificationType
-import com.crashlytics.android.Crashlytics
-import io.fabric.sdk.android.Fabric
 import java.util.*
-
 
 class MainApplication: Application() {
 
@@ -37,6 +34,5 @@ class MainApplication: Application() {
             subscriptionManager.initPreferences()
         }
 
-        Fabric.with(this, Crashlytics())
     }
 }
