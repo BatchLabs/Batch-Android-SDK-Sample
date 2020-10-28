@@ -3,7 +3,6 @@ package com.batchlabs.android.batchstore.UI.Inbox
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
@@ -27,7 +26,7 @@ class InboxFragment : androidx.fragment.app.Fragment() {
     var notifications: List<BatchInboxNotificationContent> = emptyList()
     lateinit var inboxAPI: BatchInboxFetcher
     lateinit var inboxAdapter: InboxAdapter
-    lateinit var swipe: androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    lateinit var swipe: SwipeRefreshLayout
 
     private var loading:Boolean = false
     private var TAG: String = "InboxFragment"
@@ -124,10 +123,10 @@ class InboxFragment : androidx.fragment.app.Fragment() {
     private fun setAdapter(adapter:InboxAdapter?) {
         if(adapter != null) {
             layoutView.inbox_recyclerview.adapter = adapter
-            layoutView.inbox_recyclerview.addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
-                override fun onScrollStateChanged(recyclerView: androidx.recyclerview.widget.RecyclerView, newState: Int) {
+            layoutView.inbox_recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
-                    if (newState == androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE) {
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         val canScrollDownMore = recyclerView.canScrollHorizontally(1)
                         if (!canScrollDownMore) {
                             if (!loading) { fetchMore() }
