@@ -19,6 +19,7 @@ target
 **/.idea/tasks.xml
 **/.idea/workspace.xml
 **/.idea/jarRepositories.xml
+**/.idea/compiler.xml
 
 **/.idea/dictionaries
 **/.idea/libraries
