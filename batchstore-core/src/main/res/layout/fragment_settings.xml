@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:scrollbarStyle="outsideInset"
-    tools:context="com.batchlabs.android.batchstore.core.UI.Settings.SettingsFragment">
+    tools:context="com.batchlabs.android.batchstore.ui.settings.SettingsFragment">
 
     <LinearLayout
         android:padding="15dp"

@@ -1,10 +1,10 @@
-package com.batchlabs.android.batchstore.UI.Articles
+package com.batchlabs.android.batchstore.ui.articles
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.batchlabs.android.batchstore.CartManager
-import com.batchlabs.android.batchstore.UI.Data.Models.Article
+import com.batchlabs.android.batchstore.ui.Data.Models.Article
 import com.batchlabs.android.batchstore.core.R
 import kotlinx.android.synthetic.main.activity_article_details.*
 import kotlinx.android.synthetic.main.content_article_details.*

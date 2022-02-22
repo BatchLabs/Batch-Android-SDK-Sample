@@ -1,4 +1,4 @@
-package com.batchlabs.android.batchstore.UI.Data.Models
+package com.batchlabs.android.batchstore.ui.Data.Models
 
 import java.io.Serializable
 

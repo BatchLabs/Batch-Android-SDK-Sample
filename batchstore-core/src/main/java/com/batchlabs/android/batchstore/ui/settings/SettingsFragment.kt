@@ -1,10 +1,9 @@
-package com.batchlabs.android.batchstore.core.UI.Settings
+package com.batchlabs.android.batchstore.ui.settings
 
 
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.Switch
 import com.batch.android.Batch
 import com.batchlabs.android.batchstore.*
-import com.batchlabs.android.batchstore.UI.Login.LoginLandingActivity
+import com.batchlabs.android.batchstore.ui.login.LoginLandingActivity
 import com.batchlabs.android.batchstore.core.R
 import kotlinx.android.synthetic.main.fragment_settings.view.*
 import com.batch.android.PushNotificationType

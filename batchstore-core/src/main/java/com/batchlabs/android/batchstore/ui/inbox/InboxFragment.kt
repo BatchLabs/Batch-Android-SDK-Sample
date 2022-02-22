@@ -1,4 +1,4 @@
-package com.batchlabs.android.batchstore.UI.Inbox
+package com.batchlabs.android.batchstore.ui.inbox
 
 
 import android.content.Context

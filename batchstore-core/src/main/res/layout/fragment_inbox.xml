@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.batchlabs.android.batchstore.core.UI.Inbox.InboxFragment">
+    tools:context="com.batchlabs.android.batchstore.ui.inbox.InboxFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"

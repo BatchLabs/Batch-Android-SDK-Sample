@@ -1,11 +1,12 @@
-package com.batchlabs.android.batchstore.UI.Login
+package com.batchlabs.android.batchstore.ui.login
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.batchlabs.android.batchstore.UserManager
 import com.batchlabs.android.batchstore.core.R
-import com.batchlabs.android.batchstore.core.ShopActivity
+import com.batchlabs.android.batchstore.ShopActivity
+
 import kotlinx.android.synthetic.main.activity_login_landing.*
 import kotlinx.android.synthetic.main.content_login_landing.*
 

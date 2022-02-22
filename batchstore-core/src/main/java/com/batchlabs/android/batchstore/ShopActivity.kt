@@ -1,16 +1,15 @@
-package com.batchlabs.android.batchstore.core
+package com.batchlabs.android.batchstore
 
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-import com.batchlabs.android.batchstore.UI.Articles.ArticlesFragment
-import com.batchlabs.android.batchstore.UI.Inbox.InboxFragment
-import com.batchlabs.android.batchstore.UI.Login.LoginLandingActivity
-import com.batchlabs.android.batchstore.UserManager
-import com.batchlabs.android.batchstore.core.UI.Cart.CartFragment
-import com.batchlabs.android.batchstore.core.UI.Settings.SettingsFragment
+import com.batchlabs.android.batchstore.ui.articles.ArticlesFragment
+import com.batchlabs.android.batchstore.ui.inbox.InboxFragment
+import com.batchlabs.android.batchstore.ui.login.LoginLandingActivity
+import com.batchlabs.android.batchstore.ui.cart.CartFragment
+import com.batchlabs.android.batchstore.ui.settings.SettingsFragment
+import com.batchlabs.android.batchstore.core.R
 import kotlinx.android.synthetic.main.activity_shop.*
 
 class ShopActivity : AppCompatActivity() {

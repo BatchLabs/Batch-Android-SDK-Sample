@@ -1,7 +1,6 @@
-package com.batchlabs.android.batchstore.core.UI.Cart
+package com.batchlabs.android.batchstore.ui.cart
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.*
 import com.batchlabs.android.batchstore.CartManager
 import com.batchlabs.android.batchstore.core.R

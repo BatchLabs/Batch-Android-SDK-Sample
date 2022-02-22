@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".ShopActivity"
+            android:name="com.batchlabs.android.batchstore.ShopActivity"
             android:label="@string/app_name"
             android:exported="true"
             android:configChanges="orientation|screenSize|keyboardHidden">
@@ -15,31 +15,31 @@
         </activity>
 
         <activity
-            android:name="com.batchlabs.android.batchstore.UI.Articles.ArticleDetailsActivity"
+            android:name="com.batchlabs.android.batchstore.ui.articles.ArticleDetailsActivity"
             android:label="@string/title_activity_article_details"
-            android:parentActivityName=".ShopActivity"
+            android:parentActivityName="com.batchlabs.android.batchstore.ShopActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ShopActivity" />
+                android:value="com.batchlabs.android.batchstore.ShopActivity" />
         </activity>
 
         <activity
-            android:name="com.batchlabs.android.batchstore.UI.Login.LoginCredentialsActivity"
+            android:name="com.batchlabs.android.batchstore.ui.login.LoginCredentialsActivity"
             android:label="@string/title_activity_login_landing"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
 
         <activity
-            android:name="com.batchlabs.android.batchstore.UI.Login.LoginLandingActivity"
+            android:name="com.batchlabs.android.batchstore.ui.login.LoginLandingActivity"
             android:label="@string/title_activity_login_credentials"
-            android:parentActivityName="com.batchlabs.android.batchstore.UI.Login.LoginCredentialsActivity"
+            android:parentActivityName="com.batchlabs.android.batchstore.ui.login.LoginCredentialsActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.batchlabs.android.batchstore.UI.Login.LoginCredentialsActivity" />
+                android:value="com.batchlabs.android.batchstore.ui.login.LoginCredentialsActivity" />
         </activity>
     </application>
 </manifest>

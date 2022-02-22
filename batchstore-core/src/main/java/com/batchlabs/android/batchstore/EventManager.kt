@@ -1,6 +1,6 @@
 package com.batchlabs.android.batchstore
 
-import com.batchlabs.android.batchstore.UI.Data.Models.Article
+import com.batchlabs.android.batchstore.ui.Data.Models.Article
 import com.batch.android.Batch
 
 class EventManager {

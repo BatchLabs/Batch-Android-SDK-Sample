@@ -1,11 +1,11 @@
-package com.batchlabs.android.batchstore.UI.Articles
+package com.batchlabs.android.batchstore.ui.articles
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import com.batchlabs.android.batchstore.UI.Data.Models.Article
+import com.batchlabs.android.batchstore.ui.Data.Models.Article
 import com.batchlabs.android.batchstore.core.R
 import kotlinx.android.synthetic.main.row_article.view.*
 

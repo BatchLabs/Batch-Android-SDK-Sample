@@ -1,10 +1,9 @@
-package com.batchlabs.android.batchstore.core.UI.Cart
+package com.batchlabs.android.batchstore.ui.cart
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.batchlabs.android.batchstore.UI.Data.Models.Article
+import com.batchlabs.android.batchstore.ui.Data.Models.Article
 import com.batchlabs.android.batchstore.core.R
 import kotlinx.android.synthetic.main.row_cart.view.*
 

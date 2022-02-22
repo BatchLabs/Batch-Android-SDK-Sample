@@ -1,8 +1,5 @@
-package com.batchlabs.android.batchstore.UI.Inbox
+package com.batchlabs.android.batchstore.ui.inbox
 
-import android.opengl.Visibility
-import androidx.recyclerview.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

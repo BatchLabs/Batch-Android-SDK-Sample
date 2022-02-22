@@ -1,6 +1,6 @@
-package com.batchlabs.android.batchstore.UI.Data
+package com.batchlabs.android.batchstore.ui.Data
 
-import com.batchlabs.android.batchstore.UI.Data.Models.Article
+import com.batchlabs.android.batchstore.ui.Data.Models.Article
 import com.batchlabs.android.batchstore.core.R
 
 class ArticlesFakeDataSource(){
