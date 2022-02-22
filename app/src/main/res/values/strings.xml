@@ -19,7 +19,8 @@
 
     <string name="title_activity_login">Login</string>
     <string name="title_activity_login_credentials">Sign in</string>
-    <string name="title_login_credentials">Sign into your Batch Store accout</string>
+    <string name="title_login_credentials">Sign into your Batch Store account</string>
+    <string name="sign_in_button">Sign in</string>
 
     <string name="title_activity_article_details">Article</string>
     <string name="button_article_details">Add to cart</string>
