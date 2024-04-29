@@ -12,9 +12,8 @@ import android.widget.Switch
 import com.batch.android.Batch
 import com.batchlabs.android.batchstore.*
 import com.batchlabs.android.batchstore.ui.login.LoginLandingActivity
-import com.batchlabs.android.batchstore.core.R
-import kotlinx.android.synthetic.main.fragment_settings.view.*
 import com.batch.android.PushNotificationType
+import com.batchlabs.android.batchstore.core.databinding.FragmentSettingsBinding
 import java.util.*
 
 
@@ -22,108 +21,110 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
 
     val TAG:String = "SettingsFragment"
 
+    private var _binding: FragmentSettingsBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_settings,container,false)
-
-        refreshForm(view)
-        refreshInfo(view)
-
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        val view = binding.root
+        refreshForm()
+        refreshInfo()
         return view
     }
 
-    private fun refreshInfo(view: View) {
-        view.installationID.text = "Installation ID : ${Batch.User.getInstallationID()}"
-        view.lastToken.text = "Last token : ${Batch.Push.getLastKnownPushToken()}"
+    private fun refreshInfo() {
+        binding.installationID.text = "Installation ID : ${Batch.User.getInstallationID()}"
+        binding.lastToken.text = "Last token : ${Batch.Push.getLastKnownPushToken()}"
     }
 
-    private fun refreshForm(view:View){
-        val context = context!!
-        val activity = activity!!
+    private fun refreshForm(){
+        val context = requireContext()
+        val activity = requireActivity()
 
         val userManager = UserManager(context)
         val loggedIn = userManager.isLoggedIn
         val username = userManager.username
         val subscriptionManager = SubscriptionManager(context)
 
-        setAllEnable(view)
+        setAllEnable()
 
-        view.enablePush.setOnClickListener { notificationPreference(view) }
+        binding.enablePush.setOnClickListener { notificationPreference() }
 
         val notifType = Batch.Push.getNotificationsType(context)
         if (notifType != null) {
-            view.enablePush.isChecked = !notifType.contains(PushNotificationType.NONE)
+            binding.enablePush.isChecked = !notifType.contains(PushNotificationType.NONE)
         } else {
-            view.enablePush.isChecked = true
+            binding.enablePush.isChecked = true
         }
 
 
         if (!loggedIn) {
-            view.flashSales.isChecked = false
-            view.flashSales.isEnabled = false
+            binding.flashSales.isChecked = false
+            binding.flashSales.isEnabled = false
 
-            view.login.text = "Touch to login"
+            binding.login.text = "Touch to login"
         } else {
-            view.login.isChecked = true
-            view.login.text = "Logged in with $username"
+            binding.login.isChecked = true
+            binding.login.text = "Logged in with $username"
 
-            view.flashSales.isChecked = subscriptionManager.flashSales!!
-            view.flashSales.isEnabled = true
+            binding.flashSales.isChecked = subscriptionManager.flashSales!!
+            binding.flashSales.isEnabled = true
         }
 
         val suggestedContentEnabled = subscriptionManager.suggestedContent
-        view.suggestedContent.isChecked = suggestedContentEnabled!!
-        view.suggestionFashion.isChecked = subscriptionManager.isSubscribedToSuggestion(suggestionCategoryFashion)
-        view.suggestionMensWear.isChecked = subscriptionManager.isSubscribedToSuggestion(suggestionCategoryMensWear)
-        view.suggestionOther.isChecked = subscriptionManager.isSubscribedToSuggestion(suggestionCategoryOther)
+        binding.suggestedContent.isChecked = suggestedContentEnabled!!
+        binding.suggestionFashion.isChecked = subscriptionManager.isSubscribedToSuggestion(suggestionCategoryFashion)
+        binding.suggestionMensWear.isChecked = subscriptionManager.isSubscribedToSuggestion(suggestionCategoryMensWear)
+        binding.suggestionOther.isChecked = subscriptionManager.isSubscribedToSuggestion(suggestionCategoryOther)
 
         if (!suggestedContentEnabled){
-            view.suggestionFashion.isEnabled = false
-            view.suggestionMensWear.isEnabled = false
-            view.suggestionOther.isEnabled = false
+            binding.suggestionFashion.isEnabled = false
+            binding.suggestionMensWear.isEnabled = false
+            binding.suggestionOther.isEnabled = false
         }
 
 
-        view.login.setOnClickListener {
+        binding.login.setOnClickListener {
             if (loggedIn) {
                 AlertDialog.Builder(activity)
                         .setTitle("Do you want logout ?")
                         .setPositiveButton("Yes") { _, _ ->
                             userManager.logout()
-                            refreshForm(view)
+                            refreshForm()
                         }
-                        .setNegativeButton(android.R.string.cancel) { dialog, which -> view.login.isChecked = true }
+                        .setNegativeButton(android.R.string.cancel) { dialog, which -> binding.login.isChecked = true }
                         .show()
             } else {
                 val intent = Intent(activity, LoginLandingActivity::class.java)
                 startActivity(intent)
-                view.login.isChecked = true
+                binding.login.isChecked = true
             }
         }
 
-        view.flashSales.setOnClickListener {
-            subscriptionManager.flashSales = view.flashSales.isChecked
-            refreshForm(view)
+        binding.flashSales.setOnClickListener {
+            subscriptionManager.flashSales = binding.flashSales.isChecked
+            refreshForm()
         }
 
-        view.suggestedContent.setOnClickListener {
-            subscriptionManager.suggestedContent = view.suggestedContent.isChecked
-            refreshForm(view)
+        binding.suggestedContent.setOnClickListener {
+            subscriptionManager.suggestedContent = binding.suggestedContent.isChecked
+            refreshForm()
         }
 
 
-        view.suggestionFashion.setOnClickListener { suggestionCategoryToggled(view,suggestionCategoryFashion) }
-        view.suggestionMensWear.setOnClickListener { suggestionCategoryToggled(view, suggestionCategoryMensWear) }
-        view.suggestionOther.setOnClickListener { suggestionCategoryToggled(view, suggestionCategoryOther) }
+        binding.suggestionFashion.setOnClickListener { suggestionCategoryToggled(suggestionCategoryFashion) }
+        binding.suggestionMensWear.setOnClickListener { suggestionCategoryToggled(suggestionCategoryMensWear) }
+        binding.suggestionOther.setOnClickListener { suggestionCategoryToggled(suggestionCategoryOther) }
 
-        view.printBatchUser.setOnClickListener {
+        binding.printBatchUser.setOnClickListener {
             Log.d(TAG,"Batch Store Debug information --")
             Log.d(TAG,"InstallID: ${Batch.User.getInstallationID()}")
             Log.d(TAG,"Last known push token: ${Batch.Push.getLastKnownPushToken()}")
         }
     }
 
-    private fun notificationPreference(view: View) {
-        val switch = view.enablePush
+    private fun notificationPreference() {
+        val switch = binding.enablePush
 
         if (switch.isChecked) {
             val set = EnumSet.of(PushNotificationType.ALERT)
@@ -137,22 +138,22 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
         }
     }
 
-    private fun suggestionCategoryToggled(view:View, category:String) {
+    private fun suggestionCategoryToggled(category:String) {
         var topicName:String?
         var switch:Switch?
 
         when(category) {
             suggestionCategoryFashion -> {
                 topicName = suggestionCategoryFashion
-                switch = view.suggestionFashion
+                switch = binding.suggestionFashion
             }
             suggestionCategoryMensWear -> {
                 topicName = suggestionCategoryMensWear
-                switch = view.suggestionMensWear
+                switch = binding.suggestionMensWear
             }
             suggestionCategoryOther -> {
                 topicName = suggestionCategoryOther
-                switch = view.suggestionOther
+                switch = binding.suggestionOther
             }
             else -> {
                 //Do nothing
@@ -163,16 +164,16 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
 
         if (topicName != null && switch != null) {
             Log.d(TAG,"$topicName ${switch.isChecked}")
-            SubscriptionManager(context!!).toggleSuggestionCategory(topicName,switch.isChecked)
+            SubscriptionManager(requireContext()).toggleSuggestionCategory(topicName,switch.isChecked)
         }
     }
 
-    private fun setAllEnable(view:View){
-        view.suggestedContent.isEnabled = true
-        view.suggestionFashion.isEnabled = true
-        view.suggestionMensWear.isEnabled = true
-        view.suggestionOther.isEnabled = true
-        view.flashSales.isEnabled = true
+    private fun setAllEnable(){
+        binding.suggestedContent.isEnabled = true
+        binding.suggestionFashion.isEnabled = true
+        binding.suggestionMensWear.isEnabled = true
+        binding.suggestionOther.isEnabled = true
+        binding.flashSales.isEnabled = true
     }
 
     companion object {

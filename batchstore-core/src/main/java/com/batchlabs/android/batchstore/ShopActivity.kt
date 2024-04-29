@@ -10,12 +10,15 @@ import com.batchlabs.android.batchstore.ui.login.LoginLandingActivity
 import com.batchlabs.android.batchstore.ui.cart.CartFragment
 import com.batchlabs.android.batchstore.ui.settings.SettingsFragment
 import com.batchlabs.android.batchstore.core.R
-import kotlinx.android.synthetic.main.activity_shop.*
+import com.batchlabs.android.batchstore.core.databinding.ActivityShopBinding
 
 class ShopActivity : AppCompatActivity() {
 
     private lateinit var currentFragment: androidx.fragment.app.Fragment
-    private val TAG:String = "ShopActivity"
+
+    private val TAG: String = "ShopActivity"
+
+    private lateinit var binding : ActivityShopBinding
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -45,8 +48,9 @@ class ShopActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shop)
-        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        binding = ActivityShopBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         val userManager = UserManager(applicationContext)
 
@@ -73,7 +77,7 @@ class ShopActivity : AppCompatActivity() {
         currentFragment = defaultFragment
         setupLayout("Shop", currentFragment)
 
-        bottom_navigation.selectedItemId = R.id.navigation_shop
+        binding.bottomNavigation.selectedItemId = R.id.navigation_shop
     }
 
     private fun removeAllFragments() {

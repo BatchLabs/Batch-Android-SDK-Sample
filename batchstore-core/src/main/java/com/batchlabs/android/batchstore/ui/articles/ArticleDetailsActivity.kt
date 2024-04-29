@@ -5,16 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.batchlabs.android.batchstore.CartManager
 import com.batchlabs.android.batchstore.ui.Data.Models.Article
-import com.batchlabs.android.batchstore.core.R
-import kotlinx.android.synthetic.main.activity_article_details.*
-import kotlinx.android.synthetic.main.content_article_details.*
+import com.batchlabs.android.batchstore.core.databinding.ActivityArticleDetailsBinding
+import com.batchlabs.android.batchstore.core.databinding.ContentArticleDetailsBinding
 
 class ArticleDetailsActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityArticleDetailsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_article_details)
-        setSupportActionBar(toolbar)
+        binding = ActivityArticleDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val article = intent.getSerializableExtra("article") as Article
@@ -22,14 +24,14 @@ class ArticleDetailsActivity : AppCompatActivity() {
             finish()
         }
 
-        photoDetailsImageView.setImageResource(article.image)
-        titleDetailsTextView.text = article.name
-        priceDetailsTextView.text = "${article.price} €"
+        binding.content.photoDetailsImageView.setImageResource(article.image)
+        binding.content.titleDetailsTextView.text = article.name
+        binding.content.priceDetailsTextView.text = "${article.price} €"
 
-        addToCardButton.setOnClickListener{
+        binding.content.addToCardButton.setOnClickListener{
             Toast.makeText(applicationContext,"Added \"${article.name}\" to the cart.",Toast.LENGTH_SHORT).show()
             CartManager.add(article)
-            addToCardButton.text = "Add one more to cart"
+            binding.content.addToCardButton.text = "Add one more to cart"
         }
     }
 }

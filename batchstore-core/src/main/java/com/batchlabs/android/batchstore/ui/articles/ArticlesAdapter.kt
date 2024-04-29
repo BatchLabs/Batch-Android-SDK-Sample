@@ -6,17 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.batchlabs.android.batchstore.ui.Data.Models.Article
-import com.batchlabs.android.batchstore.core.R
-import kotlinx.android.synthetic.main.row_article.view.*
+import com.batchlabs.android.batchstore.core.databinding.RowArticleBinding
 
-class ArticlesAdapter : BaseAdapter {
-    var articlesList = ArrayList<Article>()
-    var context: Context? = null
-
-    constructor(context: Context, articlesList: ArrayList<Article>) : super() {
-        this.context = context
-        this.articlesList = articlesList
-    }
+class ArticlesAdapter(context: Context, private var articlesList: ArrayList<Article>) : BaseAdapter() {
+    var context: Context? = context
 
     override fun getCount(): Int {
         return articlesList.size
@@ -33,12 +26,12 @@ class ArticlesAdapter : BaseAdapter {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val article = this.articlesList[position]
 
-        var inflator = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var articleView = inflator.inflate(R.layout.row_article, null)
+        val layoutInflater = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val articleView = RowArticleBinding.inflate(layoutInflater)
         articleView.labelTextView.text = article.name
         articleView.priceTextView.text = "${article.price} €"
         articleView.photoImageView.setImageResource(article.image)
 
-        return articleView
+        return articleView.root
     }
 }

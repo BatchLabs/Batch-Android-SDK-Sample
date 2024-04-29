@@ -1,13 +1,12 @@
 package com.batchlabs.android.batchstore.ui.cart
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.batchlabs.android.batchstore.ui.Data.Models.Article
-import com.batchlabs.android.batchstore.core.R
-import kotlinx.android.synthetic.main.row_cart.view.*
+import com.batchlabs.android.batchstore.core.databinding.RowCartBinding
 
-class CartAdapter(val articles: ArrayList<Article>): androidx.recyclerview.widget.RecyclerView.Adapter<CartAdapter.ViewHolder>() {
+class CartAdapter(val articles: ArrayList<Article>): RecyclerView.Adapter<CartAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val article = articles[position]
         holder.label.text = article.name
@@ -15,8 +14,8 @@ class CartAdapter(val articles: ArrayList<Article>): androidx.recyclerview.widge
         holder.photo.setImageResource(article.image)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartAdapter.ViewHolder {
-        val v = LayoutInflater.from(parent?.context).inflate(R.layout.row_cart, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = RowCartBinding.inflate(LayoutInflater.from(parent.context))
         return ViewHolder(v)
     }
 
@@ -24,9 +23,9 @@ class CartAdapter(val articles: ArrayList<Article>): androidx.recyclerview.widge
         return articles.size
     }
 
-    class ViewHolder(itemView: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView){
-        val label = itemView.labelCartTextView!!
-        val price = itemView.priceCartTextView!!
-        val photo = itemView.photoCartImageView!!
+    class ViewHolder(itemView: RowCartBinding): RecyclerView.ViewHolder(itemView.root){
+        val label = itemView.labelCartTextView
+        val price = itemView.priceCartTextView
+        val photo = itemView.photoCartImageView
     }
 }

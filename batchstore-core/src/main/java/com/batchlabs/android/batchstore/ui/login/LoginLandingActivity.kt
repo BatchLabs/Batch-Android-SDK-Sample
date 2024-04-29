@@ -4,27 +4,27 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.batchlabs.android.batchstore.UserManager
-import com.batchlabs.android.batchstore.core.R
 import com.batchlabs.android.batchstore.ShopActivity
-
-import kotlinx.android.synthetic.main.activity_login_landing.*
-import kotlinx.android.synthetic.main.content_login_landing.*
+import com.batchlabs.android.batchstore.core.databinding.ActivityLoginLandingBinding
 
 class LoginLandingActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityLoginLandingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_landing)
-        setSupportActionBar(toolbar)
+        binding = ActivityLoginLandingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
         UserManager(applicationContext).onboardingAttempted = true
 
-        signInButton.setOnClickListener {
-            val intent = Intent(this,LoginCredentialsActivity::class.java)
+        binding.content.signInButton.setOnClickListener {
+            val intent = Intent(this, LoginCredentialsActivity::class.java)
             startActivity(intent)
         }
 
-        notNowButton.setOnClickListener {
+        binding.content.notNowButton.setOnClickListener {
             val intent = Intent(this, ShopActivity::class.java)
             startActivity(intent)
         }

@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.batchlabs.android.batchstore.EventManager
 import com.batchlabs.android.batchstore.ui.Data.ArticlesFakeDataSource
-import com.batchlabs.android.batchstore.core.R
-import kotlinx.android.synthetic.main.fragment_articles.view.*
+import com.batchlabs.android.batchstore.core.databinding.FragmentArticlesBinding
 
 
 class ArticlesFragment : androidx.fragment.app.Fragment() {
@@ -19,12 +18,12 @@ class ArticlesFragment : androidx.fragment.app.Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_articles,container,false)
+        val view =  FragmentArticlesBinding.inflate(inflater)
 
         val articles = ArticlesFakeDataSource().articles()
-        val adapter = ArticlesAdapter(context!!,articles)
+        val adapter = ArticlesAdapter(requireContext(),articles)
 
-        val gridView = view.grid_view
+        val gridView = view.gridView
         gridView.adapter = adapter
         gridView.columnWidth = gridView.width / 2
 
@@ -38,6 +37,6 @@ class ArticlesFragment : androidx.fragment.app.Fragment() {
             startActivity(intent)
         }
 
-        return view
+        return view.root
     }
 }

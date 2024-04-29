@@ -7,20 +7,24 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.batchlabs.android.batchstore.ShopActivity
 import com.batchlabs.android.batchstore.UserManager
-import com.batchlabs.android.batchstore.core.R
-import kotlinx.android.synthetic.main.activity_login_credentials.*
-import kotlinx.android.synthetic.main.content_login_credentials.*
+import com.batchlabs.android.batchstore.core.databinding.ActivityLoginCredentialsBinding
+import com.batchlabs.android.batchstore.core.databinding.ContentLoginCredentialsBinding
+
 
 class LoginCredentialsActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityLoginCredentialsBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_credentials)
-        setSupportActionBar(toolbar)
+        binding = ActivityLoginCredentialsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        signInButton.setOnClickListener {
-            val email = emailEditText.text.toString()
+        binding.content.signInButton.setOnClickListener {
+            val email = binding.content.emailEditText.text.toString()
 
             if (email.isNotEmpty()) {
                 val userManager = UserManager(applicationContext)

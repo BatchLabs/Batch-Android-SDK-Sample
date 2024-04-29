@@ -12,7 +12,7 @@ import com.batch.android.BatchInboxFetcher
 import com.batch.android.BatchInboxNotificationContent
 import com.batchlabs.android.batchstore.UserManager
 import com.batchlabs.android.batchstore.core.R
-import kotlinx.android.synthetic.main.fragment_inbox.view.*
+import com.batchlabs.android.batchstore.core.databinding.FragmentInboxBinding
 import java.io.UnsupportedEncodingException
 import java.security.InvalidKeyException
 import java.security.NoSuchAlgorithmException
@@ -21,6 +21,9 @@ import javax.crypto.spec.SecretKeySpec
 
 class InboxFragment : androidx.fragment.app.Fragment() {
     private val inboxSecret = ""
+
+    private var _binding: FragmentInboxBinding? = null
+    private val binding get() = _binding!!
 
 
     var notifications: List<BatchInboxNotificationContent> = emptyList()
@@ -31,8 +34,6 @@ class InboxFragment : androidx.fragment.app.Fragment() {
     private var loading:Boolean = false
     private var TAG: String = "InboxFragment"
 
-    private lateinit var layoutView:View
-
     companion object {
         fun newInstance(): InboxFragment {
             return InboxFragment()
@@ -41,20 +42,12 @@ class InboxFragment : androidx.fragment.app.Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
+        _binding = FragmentInboxBinding.inflate(inflater, container, false)
 
-        val view = inflater.inflate(R.layout.fragment_inbox, container, false)
+        val view =binding.root
         val context = view.context
-        layoutView = view
-        swipe = view.swipeRefresh
+        swipe = binding.swipeRefresh
 
-        val userManager = UserManager(context)
-        val username = userManager.username
-        
-//        if (username != null) {
-//            setupUserFetcher(context, username)
-//        } else {
-//            setupInstallationFetcher(context)
-//        }
         setupInstallationFetcher(context)
 
         reloadData { adapter -> setAdapter(adapter) }
@@ -122,8 +115,8 @@ class InboxFragment : androidx.fragment.app.Fragment() {
 
     private fun setAdapter(adapter:InboxAdapter?) {
         if(adapter != null) {
-            layoutView.inbox_recyclerview.adapter = adapter
-            layoutView.inbox_recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            binding.inboxRecyclerview.adapter = adapter
+            binding.inboxRecyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
@@ -138,7 +131,7 @@ class InboxFragment : androidx.fragment.app.Fragment() {
             Log.d(TAG, "Adapter is null")
             val emptyList: MutableList<BatchInboxNotificationContent> = arrayListOf()
             inboxAdapter = InboxAdapter(emptyList) { n -> setAsRead(n) }
-            layoutView.inbox_recyclerview.adapter = inboxAdapter
+            binding.inboxRecyclerview.adapter = inboxAdapter
         }
     }
 

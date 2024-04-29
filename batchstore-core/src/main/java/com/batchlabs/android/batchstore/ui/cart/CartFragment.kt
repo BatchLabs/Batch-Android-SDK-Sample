@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.*
 import com.batchlabs.android.batchstore.CartManager
 import com.batchlabs.android.batchstore.core.R
-import kotlinx.android.synthetic.main.fragment_cart.view.*
+import com.batchlabs.android.batchstore.core.databinding.FragmentCartBinding
 
 class CartFragment : androidx.fragment.app.Fragment() {
 
-    private lateinit var layoutView:View
+    private var _binding: FragmentCartBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
         fun newInstance(): CartFragment {
@@ -18,28 +19,26 @@ class CartFragment : androidx.fragment.app.Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
-        val view = inflater.inflate(R.layout.fragment_cart,container,false)
-        layoutView = view
+        _binding = FragmentCartBinding.inflate(inflater, container, false)
         refresh()
-        return view
+        return binding.root
     }
 
     private fun refresh(){
-        val view = layoutView
         val articles = CartManager.articles
         val adapter = CartAdapter(articles)
 
-        val recyclerView = view.cart_recycler_view
+        val recyclerView = binding.cartRecyclerView
         recyclerView.adapter = adapter
 
-        val totalTv = view.totalTextView
+        val totalTv = binding.totalTextView
         if (articles.size > 0) {
             totalTv.text = "${CartManager.computeTotal()} €"
         } else {
             totalTv.text = "0 €"
         }
 
-        val checkButton = view.checkoutButton
+        val checkButton = binding.checkoutButton
         checkButton.isEnabled = articles.size > 0
 
         checkButton.setOnClickListener {
