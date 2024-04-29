@@ -3,7 +3,6 @@ package com.batchlabs.android.batchstore
 import android.app.Application
 import com.batch.android.Batch
 import com.batch.android.BatchActivityLifecycleHelper
-import com.batch.android.Config
 import com.batch.android.PushNotificationType
 import java.util.*
 
@@ -16,7 +15,6 @@ class MainApplication: Application() {
         Batch.Push.setSmallIconResourceId(R.drawable.ic_notification_smallicon)
         Batch.Push.setNotificationsColor(resources.getColor(R.color.colorAccent))
 
-
         if (Batch.Push.getNotificationsType(applicationContext) == null) {
             val set = EnumSet.of(PushNotificationType.LIGHTS)
             set.add(PushNotificationType.SOUND)
@@ -25,7 +23,7 @@ class MainApplication: Application() {
             Batch.Push.setNotificationsType(set)
         }
 
-        Batch.setConfig(Config(API_KEY))
+        Batch.start(API_KEY)
         registerActivityLifecycleCallbacks(BatchActivityLifecycleHelper())
 
         val subscriptionManager = SubscriptionManager(applicationContext)
@@ -33,6 +31,5 @@ class MainApplication: Application() {
         if (subscriptionManager.shouldSetPreferences) {
             subscriptionManager.initPreferences()
         }
-
     }
 }

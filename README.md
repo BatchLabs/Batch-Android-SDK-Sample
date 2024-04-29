@@ -15,7 +15,7 @@ This sample is a full fledged example meant to show both basic and advanced inte
 Batch (<version>) is running in dev mode (your API key is a dev one)
 Installation ID: <your installation ID>
 ```
-More informations : [https://batch.com/doc/android/sdk-integration](https://batch.com/doc/android/sdk-integration.html#_your-first-start)
+More information : [https://batch.com/doc/android/sdk-integration](https://batch.com/doc/android/sdk-integration.html#_your-first-start)
 
 # In App Messaging
 
@@ -29,17 +29,24 @@ Sample app contains 3 triggers
 ```kotlin
 // Track when the user select an article
 fun trackArticleVisit(article: Article){
-    Batch.User.trackEvent("ARTICLE_VIEW", article.name)
+    Batch.Profile.trackEvent("ARTICLE_VIEW", BatchEventAttributes().apply {
+        put(BatchEventAttributes.LABEL_KEY, article.name)
+        put("name", article.name)
+    })
 }
 // Track when the user add article to cart
 fun trackAddArticleToCart(article: Article){
-    Batch.User.trackEvent("ADD_TO_CART", article.name)
+    Batch.Profile.trackEvent("ADD_TO_CART", BatchEventAttributes().apply {
+        put(BatchEventAttributes.LABEL_KEY, article.name)
+        put("name", article.name)
+    })
 }
 
 // Track when the user proceed to checkout
 fun trackCheckout(amount: Double){
-    Batch.User.trackEvent("CHECKOUT")
-    Batch.User.trackTransaction(amount)
+    Batch.Profile.trackEvent("CHECKOUT", BatchEventAttributes().apply {
+        put("amount", amount)
+    })
 }
 ```
 This triggers can be use in the Batch dashboard with labels. 

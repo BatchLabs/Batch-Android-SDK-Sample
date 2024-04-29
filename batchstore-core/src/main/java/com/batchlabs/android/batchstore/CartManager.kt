@@ -4,7 +4,7 @@ import com.batchlabs.android.batchstore.ui.Data.Models.Article
 
 class CartManager() {
     companion object Factory {
-        val articles:ArrayList<Article> = ArrayList<Article>()
+        val articles: ArrayList<Article> = ArrayList()
 
         fun add(article: Article){
             articles.add(article)

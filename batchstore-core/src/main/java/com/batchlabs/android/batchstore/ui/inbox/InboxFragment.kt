@@ -10,7 +10,6 @@ import android.view.*
 import com.batch.android.Batch
 import com.batch.android.BatchInboxFetcher
 import com.batch.android.BatchInboxNotificationContent
-import com.batchlabs.android.batchstore.UserManager
 import com.batchlabs.android.batchstore.core.R
 import com.batchlabs.android.batchstore.core.databinding.FragmentInboxBinding
 import java.io.UnsupportedEncodingException
@@ -65,7 +64,7 @@ class InboxFragment : androidx.fragment.app.Fragment() {
     }
 
     private fun setupUserFetcher(context: Context, customID: String) {
-        val authKey = computeHash(inboxSecret, Batch.getAPIKey(), customID)
+        val authKey = computeHash(inboxSecret, "<YOUR API KEY HERE>", customID)
         inboxAPI = Batch.Inbox.getFetcher(context,customID,authKey)
         Log.d(TAG, "setupUserFetcher customID : ${customID} auth : ${authKey}")
     }

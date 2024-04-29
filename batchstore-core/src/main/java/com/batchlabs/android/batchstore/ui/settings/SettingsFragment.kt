@@ -34,7 +34,7 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
 
     private fun refreshInfo() {
         binding.installationID.text = "Installation ID : ${Batch.User.getInstallationID()}"
-        binding.lastToken.text = "Last token : ${Batch.Push.getLastKnownPushToken()}"
+        binding.lastToken.text = "Last token : ${Batch.Push.getRegistration()?.token}"
     }
 
     private fun refreshForm(){
@@ -119,7 +119,7 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
         binding.printBatchUser.setOnClickListener {
             Log.d(TAG,"Batch Store Debug information --")
             Log.d(TAG,"InstallID: ${Batch.User.getInstallationID()}")
-            Log.d(TAG,"Last known push token: ${Batch.Push.getLastKnownPushToken()}")
+            Log.d(TAG,"Last known push token: ${Batch.Push.getRegistration()?.token}")
         }
     }
 

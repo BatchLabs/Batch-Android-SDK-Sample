@@ -2,20 +2,26 @@ package com.batchlabs.android.batchstore
 
 import com.batchlabs.android.batchstore.ui.Data.Models.Article
 import com.batch.android.Batch
+import com.batch.android.BatchEventAttributes
 
 class EventManager {
-    init {}
-
     fun trackArticleVisit(article: Article){
-        Batch.User.trackEvent("ARTICLE_VIEW", article.name)
+        Batch.Profile.trackEvent("ARTICLE_VIEW", BatchEventAttributes().apply {
+            put(BatchEventAttributes.LABEL_KEY, article.name)
+            put("name", article.name)
+        })
     }
 
     fun trackAddArticleToCart(article: Article){
-        Batch.User.trackEvent("ADD_TO_CART", article.name)
+        Batch.Profile.trackEvent("ADD_TO_CART", BatchEventAttributes().apply {
+            put(BatchEventAttributes.LABEL_KEY, article.name)
+            put("name", article.name)
+        })
     }
 
     fun trackCheckout(amount: Double){
-        Batch.User.trackEvent("CHECKOUT")
-        Batch.User.trackTransaction(amount)
+        Batch.Profile.trackEvent("CHECKOUT", BatchEventAttributes().apply {
+            put("amount", amount)
+        })
     }
 }

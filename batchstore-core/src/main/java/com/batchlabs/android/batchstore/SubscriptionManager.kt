@@ -67,7 +67,7 @@ class SubscriptionManager (val context:Context) {
         val pref = PreferenceHelper()
 
         var array:ArrayList<String> = ArrayList()
-        if (!pref.getStringArray(context, arrayName).isEmpty()) {
+        if (pref.getStringArray(context, arrayName).isNotEmpty()) {
             array = pref.getStringArray(context, arrayName)
         }
 
@@ -106,24 +106,14 @@ class SubscriptionManager (val context:Context) {
         val pref = PreferenceHelper()
         val userManager = UserManager(context)
 
-        val editor = Batch.User.editor()
-        editor.setAttribute(flashSalesKey, pref.getBoolPreference(context, flashSalesKey,false))
-        editor.setAttribute(suggestedContentKey, pref.getBoolPreference(context, suggestedContentKey,false))
-
-        editor.clearTagCollection(suggestionCategoriesKeys)
-
-        pref.getStringArray(context, suggestionCategoriesKeys).forEach { category ->
-            editor.addTag(suggestionCategoriesKeys, category)
-        }
-
-        editor.clearTagCollection(sourceSubscriptionListKey)
-
-        if (userManager.isLoggedIn) {
-            pref.getStringArray(context, sourceSubscriptionListKey).forEach { category ->
-                editor.addTag(sourceSubscriptionListKey, category)
+        Batch.Profile.editor().apply {
+            setAttribute(flashSalesKey, pref.getBoolPreference(context, flashSalesKey,false))
+            setAttribute(suggestedContentKey, pref.getBoolPreference(context, suggestedContentKey,false))
+            setAttribute(suggestionCategoriesKeys, pref.getStringArray(context, suggestionCategoriesKeys))
+            if (userManager.isLoggedIn) {
+                setAttribute(sourceSubscriptionListKey, pref.getStringArray(context, sourceSubscriptionListKey))
             }
+            save()
         }
-
-        editor.save()
     }
 }

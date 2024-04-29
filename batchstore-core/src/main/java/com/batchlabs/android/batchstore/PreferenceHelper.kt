@@ -3,9 +3,7 @@ package com.batchlabs.android.batchstore
 import android.content.Context
 import android.preference.PreferenceManager
 import android.text.TextUtils
-import android.content.SharedPreferences
-import android.util.Log
-import com.google.gson.reflect.TypeToken
+
 import com.google.gson.Gson
 
 
@@ -72,7 +70,7 @@ class PreferenceHelper {
         val gson = Gson()
         val array = gson.fromJson(json, Array<String>::class.java)
 
-        if (array != null && !array.isEmpty()) {
+        if (array != null && array.isNotEmpty()) {
             array.forEach { item -> arrayList.add(item) }
         }
 

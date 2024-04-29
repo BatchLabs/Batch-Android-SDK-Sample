@@ -38,11 +38,7 @@ class UserManager (context:Context) {
     }
 
     private fun syncBatchUserInfo(){
-        val username = this.username
-        val editor = Batch.User.editor()
-        editor.setIdentifier(username)
-        editor.save()
-
+        Batch.Profile.identify(this.username)
         SubscriptionManager(context).syncDataWithBatch()
     }
 }
