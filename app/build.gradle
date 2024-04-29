@@ -30,6 +30,7 @@ android {
         debug {
         }
     }
+    namespace 'com.batchlabs.android.batchstore'
 }
 
 dependencies {

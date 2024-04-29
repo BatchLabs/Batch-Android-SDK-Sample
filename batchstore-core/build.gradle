@@ -24,6 +24,7 @@ android {
         debug {
         }
     }
+    namespace 'com.batchlabs.android.batchstore.core'
 
 }
 
