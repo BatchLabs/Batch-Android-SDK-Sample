@@ -4,25 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
+import com.batchlabs.android.batchstore.BaseActivity
 import com.batchlabs.android.batchstore.ShopActivity
 import com.batchlabs.android.batchstore.UserManager
 import com.batchlabs.android.batchstore.core.databinding.ActivityLoginCredentialsBinding
-import com.batchlabs.android.batchstore.core.databinding.ContentLoginCredentialsBinding
 
-
-class LoginCredentialsActivity : AppCompatActivity() {
+class LoginCredentialsActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginCredentialsBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginCredentialsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        setupWindowInsetsForView(binding.root)
         binding.content.signInButton.setOnClickListener {
             val email = binding.content.emailEditText.text.toString()
 
@@ -31,7 +26,7 @@ class LoginCredentialsActivity : AppCompatActivity() {
 
                 if (!userManager.isLoggedIn) {
                     //Login in
-                    Log.d("Login","Logged in : ${email}")
+                    Log.d("Login","Logged in : $email")
                     userManager.login(email)
                 } else {
                     // Invalid state, ignore
@@ -51,8 +46,7 @@ class LoginCredentialsActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Invalid Login")
         builder.setMessage("Please enter a valid email.")
-        builder.setPositiveButton("Ok"){
-            dialog, which ->
+        builder.setPositiveButton("Ok"){ dialog, _ ->
             dialog.dismiss()
         }
 

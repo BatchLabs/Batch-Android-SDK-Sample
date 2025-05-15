@@ -2,12 +2,12 @@ package com.batchlabs.android.batchstore.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.batchlabs.android.batchstore.BaseActivity
 import com.batchlabs.android.batchstore.UserManager
 import com.batchlabs.android.batchstore.ShopActivity
 import com.batchlabs.android.batchstore.core.databinding.ActivityLoginLandingBinding
 
-class LoginLandingActivity : AppCompatActivity() {
+class LoginLandingActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginLandingBinding
 
@@ -15,8 +15,7 @@ class LoginLandingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginLandingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
-
+        setupWindowInsetsForView(binding.root)
         UserManager(applicationContext).onboardingAttempted = true
 
         binding.content.signInButton.setOnClickListener {

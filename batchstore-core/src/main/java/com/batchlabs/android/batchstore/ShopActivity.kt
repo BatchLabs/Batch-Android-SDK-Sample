@@ -1,18 +1,23 @@
 package com.batchlabs.android.batchstore
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
-import com.batchlabs.android.batchstore.ui.articles.ArticlesFragment
-import com.batchlabs.android.batchstore.ui.inbox.InboxFragment
-import com.batchlabs.android.batchstore.ui.login.LoginLandingActivity
-import com.batchlabs.android.batchstore.ui.cart.CartFragment
-import com.batchlabs.android.batchstore.ui.settings.SettingsFragment
+import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import com.batch.android.Batch
 import com.batchlabs.android.batchstore.core.R
 import com.batchlabs.android.batchstore.core.databinding.ActivityShopBinding
+import com.batchlabs.android.batchstore.ui.articles.ArticlesFragment
+import com.batchlabs.android.batchstore.ui.cart.CartFragment
+import com.batchlabs.android.batchstore.ui.inbox.InboxFragment
+import com.batchlabs.android.batchstore.ui.login.LoginLandingActivity
+import com.batchlabs.android.batchstore.ui.settings.SettingsFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ShopActivity : AppCompatActivity() {
+class ShopActivity : BaseActivity() {
 
     private lateinit var currentFragment: androidx.fragment.app.Fragment
 
@@ -50,6 +55,10 @@ class ShopActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityShopBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setLightStatusBar()
+        setupWindowInsetsForView(binding.root)
+
         binding.bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         val userManager = UserManager(applicationContext)
@@ -64,6 +73,28 @@ class ShopActivity : AppCompatActivity() {
 
         currentFragment = ArticlesFragment.newInstance()
         setupLayout("Shop", currentFragment)
+        Batch.Push.requestNotificationPermission(this)
+    }
+
+    private fun setTitle(title: String) {
+        binding.titleTextView.text = title
+    }
+
+    private fun setLightStatusBar() {
+        // Set the status bar and navigation bar according to the theme
+        val windowInsetsController = WindowCompat.getInsetsController(
+            window,
+            window.decorView
+        )
+        windowInsetsController.isAppearanceLightStatusBars = true
+        windowInsetsController.isAppearanceLightNavigationBars = true
+
+        ViewCompat.setOnApplyWindowInsetsListener(
+            window.decorView
+        ) { view: View, windowInsets: WindowInsetsCompat ->
+            view.setBackgroundColor(Color.WHITE)
+            windowInsets
+        }
     }
 
     override fun onBackPressed() {

@@ -12,14 +12,12 @@ import android.widget.Switch
 import com.batch.android.Batch
 import com.batchlabs.android.batchstore.*
 import com.batchlabs.android.batchstore.ui.login.LoginLandingActivity
-import com.batch.android.PushNotificationType
 import com.batchlabs.android.batchstore.core.databinding.FragmentSettingsBinding
-import java.util.*
 
 
 class SettingsFragment : androidx.fragment.app.Fragment() {
 
-    val TAG:String = "SettingsFragment"
+    private val TAG:String = "SettingsFragment"
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
@@ -50,13 +48,7 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
 
         binding.enablePush.setOnClickListener { notificationPreference() }
 
-        val notifType = Batch.Push.getNotificationsType(context)
-        if (notifType != null) {
-            binding.enablePush.isChecked = !notifType.contains(PushNotificationType.NONE)
-        } else {
-            binding.enablePush.isChecked = true
-        }
-
+        binding.enablePush.isChecked = Batch.Push.shouldShowNotifications(context)
 
         if (!loggedIn) {
             binding.flashSales.isChecked = false
@@ -124,17 +116,10 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
     }
 
     private fun notificationPreference() {
-        val switch = binding.enablePush
-
-        if (switch.isChecked) {
-            val set = EnumSet.of(PushNotificationType.ALERT)
-            set.add(PushNotificationType.SOUND)
-            set.add(PushNotificationType.LIGHTS)
-
-            Batch.Push.setNotificationsType(set)
+        if (binding.enablePush.isChecked) {
+            Batch.Push.setShowNotifications(true)
         } else {
-            val set = EnumSet.of(PushNotificationType.NONE) // Disable all notifications
-            Batch.Push.setNotificationsType(set)
+            Batch.Push.setShowNotifications(false)
         }
     }
 

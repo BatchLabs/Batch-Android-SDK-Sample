@@ -3,12 +3,13 @@ package com.batchlabs.android.batchstore.ui.articles
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import com.batchlabs.android.batchstore.BaseActivity
 import com.batchlabs.android.batchstore.CartManager
 import com.batchlabs.android.batchstore.ui.Data.Models.Article
 import com.batchlabs.android.batchstore.core.databinding.ActivityArticleDetailsBinding
 import com.batchlabs.android.batchstore.core.databinding.ContentArticleDetailsBinding
 
-class ArticleDetailsActivity : AppCompatActivity() {
+class ArticleDetailsActivity : BaseActivity() {
 
     private lateinit var binding: ActivityArticleDetailsBinding
 
@@ -16,7 +17,6 @@ class ArticleDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityArticleDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val article = intent.getSerializableExtra("article") as Article

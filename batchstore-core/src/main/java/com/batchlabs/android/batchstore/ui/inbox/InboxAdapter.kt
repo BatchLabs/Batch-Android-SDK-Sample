@@ -1,5 +1,6 @@
 package com.batchlabs.android.batchstore.ui.inbox
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +11,13 @@ import java.util.*
 
 class InboxAdapter(private val notifications: MutableList<BatchInboxNotificationContent>, private val clickListener: (BatchInboxNotificationContent) -> Unit): androidx.recyclerview.widget.RecyclerView.Adapter<InboxAdapter.ViewHolder>() {
 
-
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (notifications.isEmpty()) {
             holder.title.text = "No data"
             holder.body.text = "Your inbox is empty. Try to refresh ⬇️"
             holder.date.visibility = View.GONE
             holder.unreadView.visibility = View.GONE
+            holder.itemView.setBackgroundColor(Color.WHITE)
         } else {
             val notification = notifications[position]
 
