@@ -45,8 +45,8 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.1.4'
     api 'androidx.vectordrawable:vectordrawable:1.1.0'
     api "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    //api 'com.batch.android:batch-sdk:2.0.0'
-    api(name:'batch-3.0.0-alpha', ext:'aar')
+    api 'com.batch.android:batch-sdk:3.0.0'
+    //api(name:'batch-3.0.0-alpha', ext:'aar')
     api 'com.google.firebase:firebase-messaging:23.4.1'
     api 'com.google.firebase:firebase-crashlytics:18.6.4'
     api 'com.google.android.gms:play-services-ads-identifier:18.0.1'
